@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrintFlow - Print smarter, faster, and easier</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/landing.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="nav-logo">
+                    <img src="/assests/logo.svg" alt="PrintFlow Logo" class="logo-img">
+                    <span class="logo-text">PrintFlow</span>
+                </div>
+                <div class="nav-actions">
+                    <a href="/signup.html" class="btn btn-secondary">Sign Up</a>
+                    <a href="/login.html" class="btn btn-primary">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <!-- Left Content -->
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        Print smarter, faster, and easier
+                    </h1>
+                    <p class="hero-description">
+                        Scan a shop's QR code, upload your file, and pick it up ready to print - no counter forms, no waiting on email attachments.
+                    </p>
+
+                    <div class="hero-badges">
+                        <div class="badge">
+                            <span class="badge-dot" style="background: var(--secondary);"></span>
+                            <span>Secure Upload</span>
+                        </div>
+                        <div class="badge">
+                            <span class="badge-dot" style="background: var(--accent-pink);"></span>
+                            <span>Fast Printing</span>
+                        </div>
+                        <div class="badge">
+                            <span class="badge-dot" style="background: var(--warning);"></span>
+                            <span>Privacy Protected</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Content - Stats Card -->
+                <div class="hero-stats">
+                    <div class="stats-card">
+                        <div class="stats-header">
+                            <h3>Print Details</h3>
+                        </div>
+
+                        <div class="printer-info">
+                            <div class="printer-label">Printer Used</div>
+                            <div class="printer-select">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M6 9V2h12v7"/>
+                                    <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+                                    <path d="M6 14h12v8H6z"/>
+                                </svg>
+                                <span>Microsoft Print to PDF</span>
+                            </div>
+                            <div class="status-indicator">
+                                <span>Status:</span>
+                                <div class="status-badge status-online">
+                                    <span class="status-dot"></span>
+                                    Online
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-value">2.1<span class="stat-unit">min</span></div>
+                                <div class="stat-label">Average Print Time</div>
+                            </div>
+                            <div class="stat-item highlight">
+                                <div class="stat-value" style="color: var(--primary);">128</div>
+                                <div class="stat-label">Print Today</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: #E0E7FF;">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                            <rect x="3" y="3" width="7" height="7" rx="1" fill="#6366F1"/>
+                            <rect x="3" y="14" width="7" height="7" rx="1" fill="#6366F1"/>
+                            <rect x="14" y="3" width="7" height="7" rx="1" fill="#6366F1"/>
+                            <rect x="14" y="14" width="7" height="7" rx="1" fill="#6366F1"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Scan the shop's code</h3>
+                    <p class="feature-description">
+                        Each shop counter has a live QR token that opens a secure upload link - no app to install.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: #FCE7F3;">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#EC4899" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="17 8 12 3 7 8"/>
+                            <line x1="12" y1="3" x2="12" y2="15"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Upload your File</h3>
+                    <p class="feature-description">
+                        Drop a PDF, image, or document. We confirm print-readiness before it reaches the queue.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: #FEF3C7;">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Collect at the Counter</h3>
+                    <p class="feature-description">
+                        Get a confirmation code the moment it's ready - hand it over and you're done.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="/assests/logo.svg" alt="PrintFlow Logo" class="logo-img">
+                    <span class="logo-text">PrintFlow</span>
+                </div>
+                <p class="footer-text">© 2026 PrintFlow. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

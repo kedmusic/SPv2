@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - PrintFlow</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+<body>
+    <div class="auth-container">
+        <!-- Left Content -->
+        <div class="auth-left">
+            <div class="auth-logo">
+                <img src="/assests/logo.svg" alt="PrintFlow Logo" class="logo-img" style="width: 2.5rem; height: 2.5rem;">
+                <span class="logo-text">PrintFlow</span>
+            </div>
+
+            <div class="auth-content">
+                <h1 class="auth-title">
+                    Welcome back to your shop.
+                    <span style="color: var(--primary);">Pick up where you left off.</span>
+                </h1>
+                <p class="auth-subtitle">
+                    Log in to see new uploads, manage your queue and print straight from your browser.
+                </p>
+
+                <div class="auth-features">
+                    <div class="auth-feature">
+                        <div class="auth-feature-icon" style="background: rgba(139, 47, 201, 0.1);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8B2FC9" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="7 10 12 15 17 10"/>
+                                <line x1="12" y1="15" x2="12" y2="3"/>
+                            </svg>
+                        </div>
+                        <div class="auth-feature-content">
+                            <h4>New uploads waiting</h4>
+                            <p>See files customers sent while you were away</p>
+                        </div>
+                    </div>
+
+                    <div class="auth-feature">
+                        <div class="auth-feature-icon" style="background: rgba(99, 102, 241, 0.1);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <rect x="3" y="3" width="7" height="7" rx="1" fill="#6366F1"/>
+                                <rect x="3" y="14" width="7" height="7" rx="1" fill="#6366F1"/>
+                                <rect x="14" y="3" width="7" height="7" rx="1" fill="#6366F1"/>
+                                <rect x="14" y="14" width="7" height="7" rx="1" fill="#6366F1"/>
+                            </svg>
+                        </div>
+                        <div class="auth-feature-content">
+                            <h4>Your shop QR code</h4>
+                            <p>Download or share it again anytime</p>
+                        </div>
+                    </div>
+
+                    <div class="auth-feature">
+                        <div class="auth-feature-icon" style="background: rgba(139, 47, 201, 0.1);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8B2FC9" stroke-width="2">
+                                <path d="M6 9V2h12v7"/>
+                                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+                                <path d="M6 14h12v8H6z"/>
+                            </svg>
+                        </div>
+                        <div class="auth-feature-content">
+                            <h4>Print directly</h4>
+                            <p>From your browser, instantly</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Form -->
+        <div class="auth-right">
+            <div class="auth-form-container">
+                <div class="auth-form-card">
+                    <div class="auth-form-header">
+                        <h2 class="auth-form-title">Login</h2>
+                        <p class="auth-form-subtitle">Enter your details to open your dashboard</p>
+                    </div>
+
+                    <div id="errorMessage" class="error-message"></div>
+
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label class="form-label">Email Address<span style="color: var(--error);">*</span></label>
+                            <input type="email" name="email" class="form-input" placeholder="" required autocomplete="email">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Password<span style="color: var(--error);">*</span></label>
+                            <div class="password-input-wrapper">
+                                <input type="password" name="password" id="password" class="form-input" placeholder="" required autocomplete="current-password">
+                                <button type="button" class="password-toggle" onclick="togglePassword('password')">Show</button>
+                            </div>
+                        </div>
+
+                        <div class="form-divider">
+                            <div class="form-checkbox">
+                                <input type="checkbox" name="remember" id="remember">
+                                <label for="remember">Remember me</label>
+                            </div>
+                            <a href="#" class="form-link">Forgot password?</a>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-full" id="submitBtn">Login</button>
+
+                        <div class="form-footer">
+                            New to PrintFlow? <a href="/signup.html" class="form-link">Create a shop account</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            const button = input.nextElementSibling;
+
+            if (input.type === 'password') {
+                input.type = 'text';
+                button.textContent = 'Hide';
+            } else {
+                input.type = 'password';
+                button.textContent = 'Show';
+            }
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData);
+            const errorMessage = document.getElementById('errorMessage');
+            const submitBtn = document.getElementById('submitBtn');
+
+            errorMessage.classList.remove('show');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Logging in...';
+
+            try {
+                const response = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: data.email,
+                        password: data.password
+                    }),
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    // Redirect to dashboard
+                    window.location.href = '/shop/dashboard.html';
+                } else {
+                    errorMessage.textContent = result.error || 'Login failed. Please check your credentials.';
+                    errorMessage.classList.add('show');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Login';
+                }
+            } catch (error) {
+                errorMessage.textContent = 'Network error. Please try again.';
+                errorMessage.classList.add('show');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Login';
+            }
+        });
+    </script>
+</body>
+</html>

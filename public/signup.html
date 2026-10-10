@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - PrintFlow</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+<body>
+    <div class="auth-container">
+        <!-- Left Content -->
+        <div class="auth-left">
+            <div class="auth-logo">
+                <img src="/assests/logo.svg" alt="PrintFlow Logo" class="logo-img" style="width: 2.5rem; height: 2.5rem;">
+                <span class="logo-text">PrintFlow</span>
+            </div>
+
+            <div class="auth-content">
+                <h1 class="auth-title">
+                    Create Your Shop Account
+                    <span style="color: var(--primary);">and Start Printing</span>
+                </h1>
+                <p class="auth-subtitle">
+                    Set up your shop in minutes. Get your unique QR code, manage uploads and print documents directly from your browser - no downloads, no hassle.
+                </p>
+
+                <div class="auth-features">
+                    <div class="auth-feature">
+                        <div class="auth-feature-icon" style="background: rgba(139, 47, 201, 0.1);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <rect x="3" y="3" width="7" height="7" rx="1" fill="#8B2FC9"/>
+                                <rect x="3" y="14" width="7" height="7" rx="1" fill="#8B2FC9"/>
+                                <rect x="14" y="3" width="7" height="7" rx="1" fill="#8B2FC9"/>
+                                <rect x="14" y="14" width="7" height="7" rx="1" fill="#8B2FC9"/>
+                            </svg>
+                        </div>
+                        <div class="auth-feature-content">
+                            <h4>Get Your shop QR code</h4>
+                            <p>Share with your customer</p>
+                        </div>
+                    </div>
+
+                    <div class="auth-feature">
+                        <div class="auth-feature-icon" style="background: rgba(99, 102, 241, 0.1);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                        </div>
+                        <div class="auth-feature-content">
+                            <h4>Receive Files Securely</h4>
+                            <p>Anonymous uploads no login required</p>
+                        </div>
+                    </div>
+
+                    <div class="auth-feature">
+                        <div class="auth-feature-icon" style="background: rgba(139, 47, 201, 0.1);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8B2FC9" stroke-width="2">
+                                <path d="M6 9V2h12v7"/>
+                                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+                                <path d="M6 14h12v8H6z"/>
+                            </svg>
+                        </div>
+                        <div class="auth-feature-content">
+                            <h4>Print Directly</h4>
+                            <p>From your browser instantly</p>
+                        </div>
+                    </div>
+
+                    <div class="auth-feature">
+                        <div class="auth-feature-icon" style="background: rgba(99, 102, 241, 0.1);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2">
+                                <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                        </div>
+                        <div class="auth-feature-content">
+                            <h4>Auto Deletion</h4>
+                            <p>Files are removed after 24 hours</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Form -->
+        <div class="auth-right">
+            <div class="auth-form-container">
+                <div class="auth-form-card">
+                    <div class="auth-form-header">
+                        <h2 class="auth-form-title">Sign up</h2>
+                        <p class="auth-form-subtitle">Create your shop account to get started</p>
+                    </div>
+
+                    <div id="errorMessage" class="error-message"></div>
+
+                    <form id="signupForm">
+                        <div class="form-group">
+                            <label class="form-label">Shop Name<span style="color: var(--error);">*</span></label>
+                            <input type="text" name="shopName" class="form-input" placeholder="" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Email Address<span style="color: var(--error);">*</span></label>
+                            <input type="email" name="email" class="form-input" placeholder="" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Password<span style="color: var(--error);">*</span></label>
+                            <div class="password-input-wrapper">
+                                <input type="password" name="password" id="password" class="form-input" placeholder="" required>
+                                <button type="button" class="password-toggle" onclick="togglePassword('password')">Show</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Confirm Password<span style="color: var(--error);">*</span></label>
+                            <div class="password-input-wrapper">
+                                <input type="password" name="confirmPassword" id="confirmPassword" class="form-input" placeholder="" required>
+                                <button type="button" class="password-toggle" onclick="togglePassword('confirmPassword')">Show</button>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-full" id="submitBtn">Create Account</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            const button = input.nextElementSibling;
+
+            if (input.type === 'password') {
+                input.type = 'text';
+                button.textContent = 'Hide';
+            } else {
+                input.type = 'password';
+                button.textContent = 'Show';
+            }
+        }
+
+        document.getElementById('signupForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData);
+            const errorMessage = document.getElementById('errorMessage');
+            const submitBtn = document.getElementById('submitBtn');
+
+            // Validation
+            if (data.password.length < 8) {
+                errorMessage.textContent = 'Password must be at least 8 characters long';
+                errorMessage.classList.add('show');
+                return;
+            }
+
+            if (data.password !== data.confirmPassword) {
+                errorMessage.textContent = 'Passwords do not match';
+                errorMessage.classList.add('show');
+                return;
+            }
+
+            errorMessage.classList.remove('show');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Creating Account...';
+
+            try {
+                const response = await fetch('/api/auth/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        shopName: data.shopName,
+                        email: data.email,
+                        password: data.password
+                    }),
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    // Redirect to dashboard
+                    window.location.href = '/shop/dashboard.html';
+                } else {
+                    errorMessage.textContent = result.error || 'Signup failed. Please try again.';
+                    errorMessage.classList.add('show');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Create Account';
+                }
+            } catch (error) {
+                errorMessage.textContent = 'Network error. Please try again.';
+                errorMessage.classList.add('show');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Create Account';
+            }
+        });
+    </script>
+</body>
+</html>
