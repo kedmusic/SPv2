@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - PrintFlow</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <img src="/assests/logo.svg" alt="PrintFlow Logo" class="logo-img">
+                <span class="logo-text">PrintFlow</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="/shop/dashboard.html" class="nav-item active">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7" rx="1"/>
+                        <rect x="14" y="3" width="7" height="7" rx="1"/>
+                        <rect x="14" y="14" width="7" height="7" rx="1"/>
+                        <rect x="3" y="14" width="7" height="7" rx="1"/>
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
+                <a href="/shop/print-files.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
+                        <polyline points="13 2 13 9 20 9"/>
+                    </svg>
+                    <span>Print Files</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="logout-btn" onclick="handleLogout()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                        <polyline points="16 17 21 12 16 7"/>
+                        <line x1="21" y1="12" x2="9" y2="12"/>
+                    </svg>
+                    <span>Log out</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <header class="dashboard-header">
+                <h1 class="dashboard-title">Dashboard</h1>
+                <p class="dashboard-subtitle">Your shop at a glance</p>
+            </header>
+
+            <div class="dashboard-content">
+                <div class="dashboard-grid">
+                    <!-- Shop Details Card -->
+                    <div class="card shop-details-card">
+                        <div class="card-header">
+                            <h3 class="card-title">Shop details</h3>
+                        </div>
+                        <div class="shop-info-item">
+                            <div class="shop-info-label">Shop name</div>
+                            <div class="shop-info-value" id="shopName">Loading...</div>
+                        </div>
+                        <div class="shop-info-item">
+                            <div class="shop-info-label">Owner name</div>
+                            <div class="shop-info-value" id="ownerName">Loading...</div>
+                        </div>
+                        <div class="shop-info-item">
+                            <div class="shop-info-label">Email address</div>
+                            <div class="shop-info-value" id="shopEmail">Loading...</div>
+                        </div>
+                    </div>
+
+                    <!-- Printer Card -->
+                    <div class="card printer-card">
+                        <div class="card-header">
+                            <h3 class="card-title">Printer</h3>
+                        </div>
+                        <div class="printer-display">
+                            <div class="printer-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M6 9V2h12v7"/>
+                                    <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+                                    <path d="M6 14h12v8H6z"/>
+                                </svg>
+                            </div>
+                            <span class="printer-name">Microsoft Print to PDF</span>
+                        </div>
+                        <div class="status-indicator" style="justify-content: flex-start;">
+                            <span style="margin-right: 0.5rem;">Status:</span>
+                            <div class="status-badge status-online">
+                                <span class="status-dot"></span>
+                                Online
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- QR Code Card -->
+                    <div class="card qr-code-card">
+                        <div class="qr-content">
+                            <div class="qr-left">
+                                <div class="qr-badge">
+                                    <span>Never expires</span>
+                                </div>
+                                <h2 class="qr-title">Shop QR code</h2>
+                                <p class="qr-description">
+                                    Customers scan this code to upload files to your shop. No login needed. Print it and keep it at your counter.
+                                </p>
+                                <div class="qr-url" id="qrUrl">
+                                    https://printflow.app/u/sharma-xerox-8f3a21
+                                </div>
+                                <div class="qr-actions">
+                                    <button class="btn btn-primary" onclick="downloadQR()">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                            <polyline points="7 10 12 15 17 10"/>
+                                            <line x1="12" y1="15" x2="12" y2="3"/>
+                                        </svg>
+                                        Download QR
+                                    </button>
+                                    <button class="btn btn-secondary" onclick="copyLink()">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                                        </svg>
+                                        Copy link
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="qr-right">
+                                <div class="qr-code-display">
+                                    <canvas id="qrCanvas"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        let shopData = null;
+        let qrCode = null;
+
+        async function loadShopData() {
+            try {
+                const response = await fetch('/api/shop/details');
+                if (!response.ok) {
+                    if (response.status === 401) {
+                        window.location.href = '/login.html';
+                        return;
+                    }
+                    throw new Error('Failed to load shop data');
+                }
+
+                shopData = await response.json();
+
+                // Update UI
+                document.getElementById('shopName').textContent = shopData.shopName;
+                document.getElementById('ownerName').textContent = shopData.ownerName || 'Not provided';
+                document.getElementById('shopEmail').textContent = shopData.email;
+                document.getElementById('qrUrl').textContent = shopData.qrUrl;
+
+                // Generate QR Code
+                generateQRCode(shopData.qrUrl);
+            } catch (error) {
+                console.error('Error loading shop data:', error);
+            }
+        }
+
+        function generateQRCode(url) {
+            const canvas = document.getElementById('qrCanvas');
+            if (qrCode) {
+                canvas.innerHTML = '';
+            }
+
+            qrCode = new QRCode(canvas, {
+                text: url,
+                width: 200,
+                height: 200,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        }
+
+        function downloadQR() {
+            const canvas = document.querySelector('#qrCanvas canvas');
+            if (canvas) {
+                const link = document.createElement('a');
+                link.download = `${shopData.shopName}-qr-code.png`;
+                link.href = canvas.toDataURL();
+                link.click();
+            }
+        }
+
+        function copyLink() {
+            const url = document.getElementById('qrUrl').textContent;
+            navigator.clipboard.writeText(url).then(() => {
+                alert('Link copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+            });
+        }
+
+        async function handleLogout() {
+            try {
+                const response = await fetch('/api/auth/logout', {
+                    method: 'POST'
+                });
+
+                if (response.ok) {
+                    window.location.href = '/login.html';
+                }
+            } catch (error) {
+                console.error('Logout error:', error);
+            }
+        }
+
+        // Load data on page load
+        loadShopData();
+    </script>
+</body>
+</html>
